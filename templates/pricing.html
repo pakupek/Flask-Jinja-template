@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Pricing{% endblock %}
+{% set active_page = "pricing" -%}
+
+{% block body %}
+<main class="container">
+  <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Pricing</h1>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquet justo fermentum dolor sagittis vulputate.</p>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    {% for pricing in pricings %}
+    <div class="col">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 fw-normal">{{ pricing['name'] }}</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title">{{ pricing['price'] }} <small class="text-muted">/ mo</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    {% for benefit in pricing['benefits'] %}
+                        <li>{{ benefit }}</li>
+                    {% endfor%}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</main>
+{% endblock %}
